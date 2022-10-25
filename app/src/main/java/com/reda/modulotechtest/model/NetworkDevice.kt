@@ -1,13 +1,13 @@
 package com.reda.modulotechtest.model
 
 data class NetworkDevice(
-    val id: String,
+    val id: Int,
     val deviceName: String,
     val productType: String,
     val intensity: Int?,
     val mode: String?,
     val position: Int?,
-    val temperature: Int?,
+    val temperature: Float?,
 )
 
 fun NetworkDevice.toDevice(): Result<Device>{

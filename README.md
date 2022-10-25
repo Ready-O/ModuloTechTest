@@ -12,6 +12,14 @@ Retrofit, the most popular library in Android development to communicate with
 REST services and Moshi, a JSON converter that converts JSON strings into
 Kotlin objects.
 
+## Manage data
+
+To persist data and to be able to manage it easily, I decided to save in a database
+using Room library. I also use Flow to collect data in real-time from the Room database.
+
+For each data type in the app, I assigned a repository that will be responsible to handle fetching and
+and sending data from the remote source (API) and the local source (database).
+
 ## Test
 
 I use Mockk library to generate mock instances of other classes and Junit for test execution.

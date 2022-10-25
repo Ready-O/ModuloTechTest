@@ -1,7 +1,7 @@
 package com.reda.modulotechtest.model
 
 data class Device(
-    val id: String,
+    val id: Int,
     val deviceName: String,
     val deviceType: DeviceType
 )
@@ -15,7 +15,7 @@ interface DeviceType{
         val position: Int
     ) : DeviceType
     data class Heater(
-        val temperature: Int,
+        val temperature: Float,
         val isOn: Boolean
     ) : DeviceType
 }

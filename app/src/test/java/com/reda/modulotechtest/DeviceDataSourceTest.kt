@@ -34,7 +34,7 @@ class DeviceDataSourceTest {
             Address("","","","",""),
         ""
         )
-        val networkDevice = NetworkDevice(id = "id", deviceName = "name",
+        val networkDevice = NetworkDevice(id = 1, deviceName = "name",
         productType = "RollerShutter", intensity = null, mode = null, position = 50,
         temperature = null)
         val apiResponse = ApiResponse(devices = listOf(networkDevice),
@@ -43,7 +43,7 @@ class DeviceDataSourceTest {
 
         // Expected
         val mockkRoller = Device(
-            id = "id",
+            id = 1,
             deviceName = "name",
             deviceType = DeviceType.RollerShutter(position = 50)
         )
