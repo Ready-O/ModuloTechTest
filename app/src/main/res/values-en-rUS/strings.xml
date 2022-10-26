@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ModuloTech Test</string>
-    <string name="home_page_fragment_label">Accueil</string>
+    <string name="home_page_fragment_label">Home</string>
     <string name="device_steering_fragment_label">Contrôle de l\'appareil</string>
     <string name="my_account_fragment_label">Mon Compte</string>
     <string name="filter_all">Tout</string>

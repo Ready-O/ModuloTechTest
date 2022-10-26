@@ -1,16 +1,17 @@
 package com.reda.modulotechtest.network
 
 import com.reda.modulotechtest.model.Device
+import com.reda.modulotechtest.model.User
 import com.reda.modulotechtest.model.toDevice
 import javax.inject.Inject
 
-class DeviceDataSourceImpl @Inject constructor(
-    private val deviceApi: DeviceApi
-): DeviceDataSource {
+class RemoteDataSourceImpl @Inject constructor(
+    private val networkApi: NetworkApi
+): RemoteDataSource {
 
     override suspend fun fetchDevices(): Result<List<Device>> {
         try {
-            val networkResponse = deviceApi.fetchData()
+            val networkResponse = networkApi.fetchData()
             val devices = mutableListOf<Device>()
             networkResponse.devices.forEach{
                 it.toDevice().onSuccess { device ->
@@ -24,6 +25,15 @@ class DeviceDataSourceImpl @Inject constructor(
         }
         catch (e: Exception){
             return Result.failure(e)
+        }
+    }
+
+    override suspend fun fetchUser(): Result<User> {
+        return try{
+            val networkResponse = networkApi.fetchData()
+            Result.success(networkResponse.user)
+        } catch (e: Exception){
+            Result.failure(e)
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.reda.modulotechtest
 
-import com.reda.modulotechtest.network.DeviceDataSource
+import com.reda.modulotechtest.network.RemoteDataSource
 import com.reda.modulotechtest.persistence.dao.HeaterDao
 import com.reda.modulotechtest.persistence.dao.LightDao
 import com.reda.modulotechtest.persistence.dao.RollerShutterDao
@@ -19,7 +19,7 @@ class DeviceRepositoryTest {
     private val mockkLightDao: LightDao = mockk(relaxed=true)
     private val mockkRollerShutterDao: RollerShutterDao = mockk(relaxed=true)
     private val mockkHeaterDAo: HeaterDao = mockk(relaxed=true)
-    private val deviceDataSource: DeviceDataSource = mockk(relaxed=true)
+    private val remoteDataSource: RemoteDataSource = mockk(relaxed=true)
 
     @Before
     fun setup(){
@@ -27,7 +27,7 @@ class DeviceRepositoryTest {
             mockkLightDao,
             mockkRollerShutterDao,
             mockkHeaterDAo,
-            deviceDataSource
+            remoteDataSource
         )
     }
 

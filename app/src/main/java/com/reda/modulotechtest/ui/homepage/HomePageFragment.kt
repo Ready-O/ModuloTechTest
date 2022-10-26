@@ -39,10 +39,6 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_HomePageFragment_to_SecondFragment)
-        }
-
         val adapter = DevicesAdapter(
             onDeleteClick = viewModel::onDeleteDeviceClicked,
             onDeviceClick = {
@@ -51,6 +47,7 @@ class HomePageFragment : Fragment() {
                 this.findNavController().navigate(action)
             }
         )
+
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerView.adapter = adapter
 
@@ -84,6 +81,10 @@ class HomePageFragment : Fragment() {
                         }
                         binding.chipHeater.setOnClickListener {
                             viewModel.onHeaterClicked()
+                        }
+
+                        binding.buttonMyAccount.setOnClickListener {
+                            findNavController().navigate(R.id.action_HomePageFragment_to_MyAccountFragment)
                         }
                     }
                 }

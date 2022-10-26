@@ -45,11 +45,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 >
 
-                <Button
-                    android:id="@+id/button_first"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_my_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/next"
+                    app:icon="@drawable/ic_baseline_person_24"
+                    android:text="@string/my_account_fragment_label"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/chip_group"
@@ -64,7 +65,7 @@
                     app:selectionRequired="true"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/button_first"
+                    app:layout_constraintTop_toBottomOf="@id/button_my_account"
                     app:layout_constraintBottom_toBottomOf="parent">
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_all"

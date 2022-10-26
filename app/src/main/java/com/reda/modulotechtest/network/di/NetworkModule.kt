@@ -1,8 +1,8 @@
 package com.reda.modulotechtest.network.di
 
-import com.reda.modulotechtest.network.DeviceApi
-import com.reda.modulotechtest.network.DeviceDataSource
-import com.reda.modulotechtest.network.DeviceDataSourceImpl
+import com.reda.modulotechtest.network.NetworkApi
+import com.reda.modulotechtest.network.RemoteDataSource
+import com.reda.modulotechtest.network.RemoteDataSourceImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Binds
@@ -19,9 +19,9 @@ import javax.inject.Singleton
 interface NetworkModule {
 
     @Binds
-    fun bindsDeviceDataSource(
-        deviceDataSource: DeviceDataSourceImpl
-    ): DeviceDataSource
+    fun bindsRemoteDataSource(
+        remoteDataSource: RemoteDataSourceImpl
+    ): RemoteDataSource
 
     companion object {
         @Provides
@@ -34,12 +34,12 @@ interface NetworkModule {
 
         @Provides
         @Singleton
-        fun providesDeviceApi(): DeviceApi {
+        fun providesNetworkApi(): NetworkApi {
             return Retrofit.Builder()
                 .baseUrl("http://storage42.com/")
                 .addConverterFactory(MoshiConverterFactory.create(providesMoshi()))
                 .build()
-                .create(DeviceApi::class.java)
+                .create(NetworkApi::class.java)
         }
     }
 }

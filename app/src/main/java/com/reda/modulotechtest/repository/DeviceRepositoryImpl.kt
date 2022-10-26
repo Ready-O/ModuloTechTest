@@ -2,7 +2,7 @@ package com.reda.modulotechtest.repository
 
 import com.reda.modulotechtest.model.Device
 import com.reda.modulotechtest.model.DeviceType
-import com.reda.modulotechtest.network.DeviceDataSource
+import com.reda.modulotechtest.network.RemoteDataSource
 import com.reda.modulotechtest.persistence.dao.HeaterDao
 import com.reda.modulotechtest.persistence.dao.LightDao
 import com.reda.modulotechtest.persistence.dao.RollerShutterDao
@@ -16,7 +16,7 @@ class DeviceRepositoryImpl @Inject constructor(
     private val lightDao: LightDao,
     private val rollerShutterDao: RollerShutterDao,
     private val heaterDao: HeaterDao,
-    private val deviceDataSource: DeviceDataSource
+    private val remoteDataSource: RemoteDataSource
 ) : DeviceRepository {
 
     override val devicesFlow: Flow<Result<List<Device>>> = combine(
@@ -51,7 +51,7 @@ class DeviceRepositoryImpl @Inject constructor(
     }
 
     private suspend fun refresh(): Result<List<Device>>{
-        return deviceDataSource.fetchDevices().onSuccess {
+        return remoteDataSource.fetchDevices().onSuccess {
             addDevicesToDatabase(it)
         }
     }

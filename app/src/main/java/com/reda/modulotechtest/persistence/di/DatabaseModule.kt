@@ -6,6 +6,7 @@ import com.reda.modulotechtest.persistence.AppDatabase
 import com.reda.modulotechtest.persistence.dao.HeaterDao
 import com.reda.modulotechtest.persistence.dao.LightDao
 import com.reda.modulotechtest.persistence.dao.RollerShutterDao
+import com.reda.modulotechtest.persistence.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,4 +42,9 @@ object DatabaseModule {
     fun providesHeaterDao(
         database: AppDatabase
     ): HeaterDao = database.heaterDao()
+
+    @Provides
+    fun providesUserDao(
+        database: AppDatabase
+    ): UserDao = database.userDao()
 }

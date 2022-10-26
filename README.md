@@ -29,7 +29,15 @@ When clicking a device, the app navigates to the DeviceSteeringFragment with the
 The ViewModel of this fragment uses the id argument to fetch the device from the repo and display the corresponding screen.
 Adter editing the data, the repository updates the changes in the database. And since the UI work in reactive way with flows, the changes are displayed immediately in the home page.
 
+## My Account
+
+Same as the devices, the user data is in the Room database and fetched by the UI layer using flow. In the fragment, I could have saved the edits of the user in the viewModel (to survive configuration changes for example). 
+
 ## Test
 
 I use Mockk library to generate mock instances of other classes and Junit for test execution.
 I tested successfully the simple I/O functions but for multiple functions that are complex, I wrote their test but they didn't work.
+
+## Multi-language
+
+I added two string resources for english and french.
