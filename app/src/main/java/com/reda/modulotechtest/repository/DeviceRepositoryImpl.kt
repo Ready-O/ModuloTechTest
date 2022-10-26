@@ -101,4 +101,15 @@ class DeviceRepositoryImpl @Inject constructor(
             )
         )
     }
+
+    override suspend fun updateHeater(id: Int, name: String, mode: Boolean, temperature: Float) {
+        heaterDao.updateItem(
+            HeaterEntity(
+                id = id,
+                deviceName = name,
+                isOn = mode,
+                temperature = temperature
+            )
+        )
+    }
 }

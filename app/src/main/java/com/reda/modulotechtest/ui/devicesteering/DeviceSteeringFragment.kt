@@ -112,6 +112,24 @@ class DeviceSteeringFragment : Fragment() {
                         binding.rollerView.visibility = GONE
                         binding.heaterView.visibility = VISIBLE
                         binding.errorView.visibility = GONE
+
+                        binding.heaterName.text = it.name
+
+                        binding.heaterMode.isChecked = it.mode
+
+                        binding.temperatureText.text = getString(R.string.temperature,it.temperature)
+                        binding.temperatureSlider.value = it.temperature
+                        binding.temperatureSlider.addOnChangeListener { _, value, _ ->
+                            binding.temperatureText.text = getString(R.string.temperature,value)
+                        }
+
+                        binding.heaterCta.setOnClickListener {
+                            viewModel.onHeaterCtaClicked(
+                                mode = binding.heaterMode.isChecked,
+                                temperature = binding.temperatureSlider.value
+                            )
+                            findNavController().navigateUp()
+                        }
                     }
                 }
             }

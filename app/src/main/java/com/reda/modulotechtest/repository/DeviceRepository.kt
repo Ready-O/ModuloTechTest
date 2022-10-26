@@ -19,4 +19,10 @@ interface DeviceRepository {
         name: String,
         position: Int
     )
+    suspend fun updateHeater(
+        id: Int,
+        name: String,
+        mode: Boolean,
+        temperature: Float
+    )
 }

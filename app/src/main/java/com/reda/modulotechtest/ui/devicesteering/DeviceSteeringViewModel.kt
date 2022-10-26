@@ -79,4 +79,16 @@ class DeviceSteeringViewModel @Inject constructor(
             )
         }
     }
+
+    fun onHeaterCtaClicked(mode: Boolean, temperature: Float){
+        viewModelScope.launch {
+            val heater = (viewState.value as DeviceSteeringViewState.Heater)
+            deviceRepository.updateHeater(
+                id = heater.id,
+                name = heater.name,
+                mode = mode,
+                temperature = temperature
+            )
+        }
+    }
 }
