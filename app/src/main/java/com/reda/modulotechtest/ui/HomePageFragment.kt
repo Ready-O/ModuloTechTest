@@ -49,7 +49,7 @@ class HomePageFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerView.adapter = adapter
 
-        lifecycle.coroutineScope.launch {
+        lifecycle.coroutineScope.launchWhenStarted {
             viewModel.viewState.collect {
                 when(it){
                     DevicesViewState.Loading -> {
@@ -68,6 +68,18 @@ class HomePageFragment : Fragment() {
                         binding.devicesView.visibility = VISIBLE
                         binding.errorView.visibility = GONE
                         adapter.submitList(it.devices)
+                        binding.chipAll.setOnClickListener {
+                            viewModel.onAllClicked()
+                        }
+                        binding.chipLight.setOnClickListener {
+                            viewModel.onLightClicked()
+                        }
+                        binding.chipRoller.setOnClickListener {
+                            viewModel.onRollerClicked()
+                        }
+                        binding.chipHeater.setOnClickListener {
+                            viewModel.onHeaterClicked()
+                        }
                     }
                 }
             }
