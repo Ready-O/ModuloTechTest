@@ -10,7 +10,6 @@ import com.reda.modulotechtest.persistence.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
-import java.nio.file.Files.find
 import javax.inject.Inject
 
 class DeviceRepositoryImpl @Inject constructor(
@@ -83,12 +82,22 @@ class DeviceRepositoryImpl @Inject constructor(
     }
 
     override suspend fun updateLight(id: Int, name: String, mode: Boolean, intensity: Int) {
-        lightDao.updateLight(
+        lightDao.updateItem(
             LightEntity(
                 id = id,
                 deviceName = name,
                 intensity = intensity,
                 isOn = mode
+            )
+        )
+    }
+
+    override suspend fun updateRollerShutter(id: Int, name: String, position: Int) {
+        rollerShutterDao.updateItem(
+            RollerShutterEntity(
+                id = id,
+                deviceName = name,
+                position = position
             )
         )
     }

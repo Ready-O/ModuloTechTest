@@ -68,4 +68,15 @@ class DeviceSteeringViewModel @Inject constructor(
             )
         }
     }
+    
+    fun onRollerCtaClicked(position: Int){
+        viewModelScope.launch{
+            val rollerShutter = (viewState.value as DeviceSteeringViewState.RollerShutter)
+            deviceRepository.updateRollerShutter(
+                id = rollerShutter.id,
+                name = rollerShutter.name,
+                position = position
+            )
+        }
+    }
 }

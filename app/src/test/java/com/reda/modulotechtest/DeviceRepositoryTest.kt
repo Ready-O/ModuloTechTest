@@ -7,7 +7,6 @@ import com.reda.modulotechtest.persistence.dao.RollerShutterDao
 import com.reda.modulotechtest.persistence.model.LightEntity
 import com.reda.modulotechtest.repository.DeviceRepository
 import com.reda.modulotechtest.repository.DeviceRepositoryImpl
-import io.mockk.MockKSettings.relaxed
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
@@ -44,7 +43,7 @@ class DeviceRepositoryTest {
 
         // Then
         coVerify {
-            mockkLightDao.updateLight(
+            mockkLightDao.updateItem(
                 LightEntity(
                     id = 1,
                     deviceName = "name",

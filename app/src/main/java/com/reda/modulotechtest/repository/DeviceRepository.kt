@@ -14,4 +14,9 @@ interface DeviceRepository {
         mode: Boolean,
         intensity: Int
     )
+    suspend fun updateRollerShutter(
+        id: Int,
+        name: String,
+        position: Int
+    )
 }

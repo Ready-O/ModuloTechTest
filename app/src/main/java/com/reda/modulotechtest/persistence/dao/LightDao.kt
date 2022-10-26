@@ -18,6 +18,6 @@ interface LightDao {
     suspend fun insertItem(light: LightEntity)
 
     @Update
-    suspend fun updateLight(light: LightEntity)
+    suspend fun updateItem(light: LightEntity)
 
 }

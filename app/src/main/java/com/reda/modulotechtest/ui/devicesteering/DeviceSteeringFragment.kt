@@ -92,6 +92,19 @@ class DeviceSteeringFragment : Fragment() {
                         binding.rollerView.visibility = VISIBLE
                         binding.heaterView.visibility = GONE
                         binding.errorView.visibility = GONE
+
+                        binding.rollerName.text = it.name
+
+                        binding.positionText.text = getString(R.string.position,it.position)
+                        binding.positionSlider.value = it.position.toFloat()
+                        binding.positionSlider.addOnChangeListener{_, value, _ ->
+                            binding.positionText.text = getString(R.string.position,value.toInt())
+                        }
+
+                        binding.rollerCta.setOnClickListener {
+                            viewModel.onRollerCtaClicked(binding.positionSlider.value.toInt())
+                            findNavController().navigateUp()
+                        }
                     }
                     is DeviceSteeringViewState.Heater -> {
                         binding.loadingView.visibility = GONE
