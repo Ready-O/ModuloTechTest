@@ -6,13 +6,11 @@ import com.reda.modulotechtest.network.DeviceDataSource
 import com.reda.modulotechtest.persistence.dao.HeaterDao
 import com.reda.modulotechtest.persistence.dao.LightDao
 import com.reda.modulotechtest.persistence.dao.RollerShutterDao
-import com.reda.modulotechtest.persistence.model.toDevice
-import com.reda.modulotechtest.persistence.model.toHeaterEntity
-import com.reda.modulotechtest.persistence.model.toLightEntity
-import com.reda.modulotechtest.persistence.model.toRollerShutterEntity
+import com.reda.modulotechtest.persistence.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
+import java.nio.file.Files.find
 import javax.inject.Inject
 
 class DeviceRepositoryImpl @Inject constructor(
@@ -67,5 +65,31 @@ class DeviceRepositoryImpl @Inject constructor(
                 is DeviceType.Heater -> heaterDao.insertItem(device.toHeaterEntity())
             }
         }
+    }
+
+    override fun getDevice(id: Int): Flow<Result<Device>> = devicesFlow.map{ result ->
+        if (result.isSuccess){
+            val device = result.getOrThrow().find { it.id == id }
+            if (device == null){
+                Result.failure(Exception())
+            }
+            else{
+                Result.success(device)
+            }
+        }
+        else{
+            Result.failure(Exception())
+        }
+    }
+
+    override suspend fun updateLight(id: Int, name: String, mode: Boolean, intensity: Int) {
+        lightDao.updateLight(
+            LightEntity(
+                id = id,
+                deviceName = name,
+                intensity = intensity,
+                isOn = mode
+            )
+        )
     }
 }

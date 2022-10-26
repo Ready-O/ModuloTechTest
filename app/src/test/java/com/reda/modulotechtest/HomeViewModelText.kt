@@ -3,11 +3,10 @@ package com.reda.modulotechtest
 import com.reda.modulotechtest.model.Device
 import com.reda.modulotechtest.model.DeviceType
 import com.reda.modulotechtest.repository.DeviceRepository
-import com.reda.modulotechtest.ui.DevicesViewState
-import com.reda.modulotechtest.ui.HomeViewModel
+import com.reda.modulotechtest.ui.homepage.DevicesViewState
+import com.reda.modulotechtest.ui.homepage.HomeViewModel
 import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert

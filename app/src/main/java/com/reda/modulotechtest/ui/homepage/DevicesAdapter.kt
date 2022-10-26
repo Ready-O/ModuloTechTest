@@ -1,4 +1,4 @@
-package com.reda.modulotechtest.ui
+package com.reda.modulotechtest.ui.homepage
 
 
 import android.view.LayoutInflater
@@ -12,9 +12,9 @@ import com.reda.modulotechtest.model.Device
 import com.reda.modulotechtest.model.DeviceType
 
 class DevicesAdapter(
-    private val onDeviceClick: (Device) -> Unit,
+    private val onDeviceClick: (Int) -> Unit,
     private val onDeleteClick: (Device) -> Unit
-): ListAdapter<Device,DevicesAdapter.DeviceViewHolder>(DiffCallback)
+): ListAdapter<Device, DevicesAdapter.DeviceViewHolder>(DiffCallback)
 {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
@@ -32,7 +32,7 @@ class DevicesAdapter(
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         val current = getItem(position)
         holder.itemView.setOnClickListener {
-            onDeviceClick(current)
+            onDeviceClick(current.id)
         }
 
         val res = holder.itemView.context.resources

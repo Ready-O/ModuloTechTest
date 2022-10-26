@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.reda.modulotechtest.persistence.model.LightEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -15,5 +16,8 @@ interface LightDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertItem(light: LightEntity)
+
+    @Update
+    suspend fun updateLight(light: LightEntity)
 
 }

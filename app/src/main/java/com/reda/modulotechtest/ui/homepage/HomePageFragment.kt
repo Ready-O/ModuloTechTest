@@ -1,4 +1,4 @@
-package com.reda.modulotechtest.ui
+package com.reda.modulotechtest.ui.homepage
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.reda.modulotechtest.R
 import com.reda.modulotechtest.databinding.FragmentHomePageBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomePageFragment : Fragment() {
@@ -45,7 +43,14 @@ class HomePageFragment : Fragment() {
             findNavController().navigate(R.id.action_HomePageFragment_to_SecondFragment)
         }
 
-        val adapter = DevicesAdapter(onDeleteClick = viewModel::onDeleteDeviceClicked, onDeviceClick = {})
+        val adapter = DevicesAdapter(
+            onDeleteClick = viewModel::onDeleteDeviceClicked,
+            onDeviceClick = {
+                val action =
+                    HomePageFragmentDirections.actionHomePageFragmentToDeviceSteeringFragment(it)
+                this.findNavController().navigate(action)
+            }
+        )
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerView.adapter = adapter
 

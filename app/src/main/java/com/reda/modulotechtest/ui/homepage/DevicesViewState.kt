@@ -1,4 +1,4 @@
-package com.reda.modulotechtest.ui
+package com.reda.modulotechtest.ui.homepage
 
 import com.reda.modulotechtest.model.Device
 

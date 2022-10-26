@@ -3,10 +3,13 @@
     <!-- Strings used for fragments for navigation -->
     <string name="home_page_fragment_label">Accueil</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="device_steering_fragment_label">Contrôle de l\'appareil</string>
     <string name="filter_all">Tout</string>
     <string name="filter_light">Lampe</string>
     <string name="filter_roller">Volant</string>
     <string name="filter_heater">Radiateur</string>
+    <string name="mode">Mode</string>
+    <string name="edit">Modifier</string>
     <string name="intensity">Intensité : %1$d</string>
     <string name="position">Position : %1$d</string>
     <string name="temperature">Température : %1$.1f°</string>

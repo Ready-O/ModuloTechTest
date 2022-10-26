@@ -1,6 +1,5 @@
-package com.reda.modulotechtest.ui
+package com.reda.modulotechtest.ui.homepage
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.reda.modulotechtest.model.Device

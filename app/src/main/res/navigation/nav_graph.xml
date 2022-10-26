@@ -7,13 +7,16 @@
 
     <fragment
         android:id="@+id/HomePageFragment"
-        android:name="com.reda.modulotechtest.ui.HomePageFragment"
+        android:name="com.reda.modulotechtest.ui.homepage.HomePageFragment"
         android:label="@string/home_page_fragment_label"
         tools:layout="@layout/fragment_home_page">
 
         <action
             android:id="@+id/action_HomePageFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_HomePageFragment_to_deviceSteeringFragment"
+            app:destination="@id/deviceSteeringFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -24,5 +27,15 @@
         <action
             android:id="@+id/action_SecondFragment_to_HomePageFragment"
             app:destination="@id/HomePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deviceSteeringFragment"
+        android:name="com.reda.modulotechtest.ui.devicesteering.DeviceSteeringFragment"
+        android:label="@string/device_steering_fragment_label"
+        tools:layout="@layout/fragment_device_steering">
+
+        <argument
+            android:name="device_id"
+            app:argType="integer" />
     </fragment>
 </navigation>

@@ -22,7 +22,14 @@ Following the MVVM pattern, I create a ViewModel for each fragment in order to m
 
 I fetch all the three types of products from the Database (and the API if it's the first time). 
 The data is mapped to the Device type and then it is displayed within a RecyclerView in the HomePageFragment.
+When clicking a device, the app navigates to the DeviceSteeringFragment with the id of the device as an argument.
+
+## Device Steering
+
+The ViewModel of this fragment uses the id argument to fetch the device from the repo and display the corresponding screen.
+Adter editing the data, the repository updates the changes in the database. And since the UI work in reactive way with flows, the changes are displayed immediately in the home page.
 
 ## Test
 
 I use Mockk library to generate mock instances of other classes and Junit for test execution.
+I tested successfully the simple I/O functions but for multiple functions that are complex, I wrote their test but they didn't work.
