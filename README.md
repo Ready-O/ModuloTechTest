@@ -18,6 +18,11 @@ For each data type in the app, I assigned a repository that will be responsible 
 
 Following the MVVM pattern, I create a ViewModel for each fragment in order to manage the logic and the data to display.
 
+## HomePage
+
+I fetch all the three types of products from the Database (and the API if it's the first time). 
+The data is mapped to the Device type and then it is displayed within a RecyclerView in the HomePageFragment.
+
 ## Test
 
 I use Mockk library to generate mock instances of other classes and Junit for test execution.

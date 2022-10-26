@@ -45,7 +45,7 @@ class HomePageFragment : Fragment() {
             findNavController().navigate(R.id.action_HomePageFragment_to_SecondFragment)
         }
 
-        val adapter = DevicesAdapter {}
+        val adapter = DevicesAdapter(onDeleteClick = viewModel::onDeleteDeviceClicked, onDeviceClick = {})
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerView.adapter = adapter
 

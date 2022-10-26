@@ -11,8 +11,10 @@ import com.reda.modulotechtest.databinding.DeviceItemBinding
 import com.reda.modulotechtest.model.Device
 import com.reda.modulotechtest.model.DeviceType
 
-class DevicesAdapter(private val onDeviceClick: (Device) -> Unit):
-    ListAdapter<Device,DevicesAdapter.DeviceViewHolder>(DiffCallback)
+class DevicesAdapter(
+    private val onDeviceClick: (Device) -> Unit,
+    private val onDeleteClick: (Device) -> Unit
+): ListAdapter<Device,DevicesAdapter.DeviceViewHolder>(DiffCallback)
 {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
@@ -54,16 +56,25 @@ class DevicesAdapter(private val onDeviceClick: (Device) -> Unit):
         holder.bind(
             item = current,
             deviceName = deviceName,
-            deviceDetail = deviceDetail
+            deviceDetail = deviceDetail,
+            onDeleteClick = onDeleteClick
         )
     }
 
     class DeviceViewHolder(private var binding: DeviceItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Device, deviceName: String, deviceDetail: String) {
+        fun bind(
+            item: Device,
+            deviceName: String,
+            deviceDetail: String,
+            onDeleteClick: (Device) -> Unit
+        ) {
             binding.deviceName.text = deviceName
             binding.deviceDetail.text = deviceDetail
+            binding.deleteButton.setOnClickListener {
+                onDeleteClick(item)
+            }
         }
     }
 

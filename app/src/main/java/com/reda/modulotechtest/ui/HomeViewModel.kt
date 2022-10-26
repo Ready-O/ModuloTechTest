@@ -65,4 +65,15 @@ class HomeViewModel @Inject constructor(
             _viewState.value = DevicesViewState.Devices(list)
         }
     }
+
+    fun onDeleteDeviceClicked(device: Device){
+        viewModelScope.launch {
+            val list = devices.value.toMutableList()
+            list.remove(device)
+            _devices.value = list
+            val listViewState =  (viewState.value as DevicesViewState.Devices).devices.toMutableList()
+            listViewState.remove(device)
+            _viewState.value = DevicesViewState.Devices(listViewState)
+        }
+    }
 }
